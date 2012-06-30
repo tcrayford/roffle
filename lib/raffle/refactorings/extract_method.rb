@@ -37,7 +37,6 @@ Serializer.to_ruby(code)
     end
   end
 
-
   module Refactorings
     class ExtractMethod
       def self.extract_method(code, new_method_name, start_line, end_line, start_column, end_column)
