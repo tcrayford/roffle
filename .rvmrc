@@ -1,1 +1,1 @@
-rvm use 1.9.3@raffle --create
+rvm use rbx@raffle --create
