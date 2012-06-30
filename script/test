@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 0 ]; then
+  filename=`echo $1 | cut -d ':' -f 1`
+  command="rspec -f doc $1"
+  $command
+else
+  rspec spec
+fi
+
