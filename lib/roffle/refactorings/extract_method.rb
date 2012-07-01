@@ -12,7 +12,7 @@ class Array
   end
 end
 
-module Raffle
+module Roffle
   module Serializer
     def self.to_ruby(ast)
       Ruby2Ruby.new.process(ast.to_sexp)
@@ -64,7 +64,7 @@ Serializer.to_ruby(code)
         new_body = []
         new_body.concat(method_definition.body.array.take(lines.first))
         new_body << "#{new_method_name}()".to_ast
-        new_body.concat(method_definition.body.array.drop(lines.start + 1))
+        new_body.concat(method_definition.body.array.drop(lines.first + 1))
         method_definition.body.array = new_body
         Serializer.to_ruby(method_definition)
       end

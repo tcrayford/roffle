@@ -1,7 +1,7 @@
 require 'pp'
 require 'ruby2ruby'
 $LOAD_PATH.unshift(File.expand_path("../../../lib", __FILE__))
-require 'raffle/refactorings/extract_method'
+require 'roffle/refactorings/extract_method'
 
 describe 'extracting a method' do
   it 'extract without any local variables or args' do
@@ -19,7 +19,7 @@ def foo
   bar
 end
 RUBY
-    Raffle::Refactorings::ExtractMethod.extract_method(code, 'bar', 2, 2, 0, 12).strip.should == extracted_code.strip
+    Roffle::Refactorings::ExtractMethod.extract_method(code, 'bar', 2, 2, 0, 12).strip.should == extracted_code.strip
   end
 
   it 'ignores lines outside the refactoring' do
@@ -39,7 +39,7 @@ def foo
   puts("345")
 end
 RUBY
-    Raffle::Refactorings::ExtractMethod.extract_method(code, 'bar', 2, 2, 0, 12).strip.should == extracted_code.strip
+    Roffle::Refactorings::ExtractMethod.extract_method(code, 'bar', 2, 2, 0, 12).strip.should == extracted_code.strip
   end
 
   it 'write an rspec matcher that compares strings as parsed exps'
