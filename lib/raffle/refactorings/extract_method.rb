@@ -61,7 +61,11 @@ Serializer.to_ruby(code)
       end
 
       def replace_body(method_definition, lines, new_method_name)
-        method_definition.body.array = ["#{new_method_name}()".to_ast]
+        new_body = []
+        new_body.concat(method_definition.body.array.take(lines.first))
+        new_body << "#{new_method_name}()".to_ast
+        new_body.concat(method_definition.body.array.drop(lines.start + 1))
+        method_definition.body.array = new_body
         Serializer.to_ruby(method_definition)
       end
     end
